@@ -8,7 +8,9 @@ enum Minigames {
     //% block="minesweeper"
     Minesweeper,
     //% block="catch"
-    Catch
+    Catch,
+    //% block="flying bird"
+    FlyingBird
 }
 enum Hands {
     //% block="rock"
@@ -17,4 +19,20 @@ enum Hands {
     Paper,
     //% block="scissors"
     Scissors
+}
+enum Brightness {
+    //% block="low"
+    Low,
+    //% block="medium"
+    Medium,
+    //% block="high"
+    High,
+    //% block="eraser"
+    Eraser
+}
+enum Level {
+    //% block="easy"
+    Easy,
+    //% block="difficult"
+    Difficult
 }
