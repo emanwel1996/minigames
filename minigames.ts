@@ -15,7 +15,7 @@ namespace minigames {
         let cpu: Hands;
         let turn: boolean = true;
         let wins: number = 0;
-        let losses: number = 0:
+        let losses: number = 0;
         let draws: number = 0;
         input.onButtonPressed(Button.A, (): void => {
             if (turn) hand = (hand + 1) % 3;
@@ -27,7 +27,7 @@ namespace minigames {
                 music.play(music.stringPlayable("E D G F B A C5 B ", 120), music.PlaybackMode.UntilDone);
                 showHand(cpu);
                 basic.pause(2000);
-                if ((hand - 1) % 3 === cpu)) {
+                if ((hand - 1) % 3 === cpu) {
                     basic.showIcon(IconNames.Happy);
                     wins++;
                 } else if ((hand + 1) % 3 === cpu) {
