@@ -1,7 +1,9 @@
 //% block="Minigames" color=#00FFFF icon="\uf11b"
 namespace minigames {
-    function showHand(hand: Hands) {
-        if (hand == 0) basic.showLeds()
+    function showHand(hand: Hands): void {
+        if (hand === 0) basic.showLeds("00000\n11111\n11111\n11111\n00000");
+        else if (hand === 1) basic.showLeds("11111\n11111\n11111\n11111\n11111");
+        else basic.showIcon(IconNames.Scissors);
     }
     /**
      * Starts a rock paper scissors gme
@@ -9,7 +11,6 @@ namespace minigames {
      */
     //% block="play rock paper scissors"
     export function rockPaperScissors(): void {
-        // assignation
         let hand: Hands = 0;
         let cpu: Hands;
         let turn: boolean = true;
@@ -24,6 +25,33 @@ namespace minigames {
                 turn = false;
                 cpu = randint(0, 2);
                 music.play(music.stringPlayable("E D G F B A C5 B ", 120), music.PlaybackMode.UntilDone);
+                showHand(cpu);
+                basic.pause(2000);
+                if ((hand - 1) % 3 === cpu)) {
+                    basic.showIcon(IconNames.Happy);
+                    wins++;
+                } else if ((hand + 1) % 3 === cpu) {
+                    basic.showIcon(IconNames.Sad);
+                    losses++;
+                } else {
+                    basic.showLeds("00000\n01010\n00000\n11111\n00000");
+                    draws++;
+                }
+                basic.pause(1000);
+                turn = true;
+            }
+        });
+        basic.forever((): void => {
+            if (wins + losses + draws !== 5) {
+                if (turn) showHand(hand);
+            } else {
+                turn = false;
+                if (wins > losses || draws > losses) basic.showString("YOU WON!");
+                else basic.showString("YOU LOST!");
+                wins = 0;
+                losses = 0;
+                draws = 0;
+                turn = true;
             }
         });
     }
